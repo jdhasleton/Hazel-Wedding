@@ -1,6 +1,6 @@
 # Hazel Wedding Co. — website
 
-**Version 2.3** · September 2026
+**Version 2.3.1** · September 2026
 
 Marketing site for Hazel Wedding Co., Madison Hasleton’s wedding planning and coordination
 studio in Utah. Static HTML/CSS/JS, no build step, deploys to Vercel as-is.
@@ -56,7 +56,7 @@ Everything below is marked in the HTML with `TODO`, `SLOT` or `PLACEHOLDER` comm
    every HTML file whenever you change `styles.css` or `main.js`, or visitors may keep an
    older copy for up to an hour:
    ```bash
-   sed -i '' 's/?v=2\.3/?v=2.4/g' *.html journal/*.html
+   sed -i '' 's/?v=2\.3\.1/?v=2.4/g' *.html journal/*.html
    ```
 4. **Contact form.** Create a free form at [formspree.io](https://formspree.io), then set
    `data-endpoint="https://formspree.io/f/XXXX"` on the `<form>` in `contact.html`. Until
@@ -95,6 +95,7 @@ fills and `--rose` for accent text (kept dark enough for 4.5:1 on cream). Type i
 | `v2.1` | Blush hover states, all photos swapped for placeholder slots, capped image heights, JS additions (validation, header tuck, accordion, back-to-top) |
 | `v2.2` | Privacy Policy + Terms of Use pages, Hazel Media LLC footer, inquiry consent notice + newsletter opt-in, standalone newsletter signup, cookie banner with Google Analytics consent gate, domain → hazelwedding.com |
 | `v2.3` | Cream hero with centred “Hazel Wedding” wordmark, cream/hazel favicon, asset URLs version-stamped (`?v=`) and the year-long `assets/` cache header relaxed so stylesheet changes actually reach visitors |
+| `v2.3.1` | Hero wordmark no longer clips the italic l and g |
 
 ## Adding a journal post
 
