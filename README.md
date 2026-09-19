@@ -1,6 +1,6 @@
 # Hazel Wedding Co. — website
 
-**Version 2.1** · September 2026
+**Version 2.2** · September 2026
 
 Marketing site for Hazel Wedding Co., Madison Hasleton’s wedding planning and coordination
 studio in Utah. Static HTML/CSS/JS, no build step, deploys to Vercel as-is.
@@ -14,7 +14,9 @@ studio in Utah. Static HTML/CSS/JS, no build step, deploys to Vercel as-is.
 | `/journal` | `journal/index.html` | Blog index (filterable) |
 | `/journal/<slug>` | `journal/*.html` | Blog posts (three included) |
 | `/about` | `about.html` | Madison’s story, values |
-| `/contact` | `contact.html` | Inquiry form + general FAQ |
+| `/contact` | `contact.html` | Inquiry form (with consent notice + newsletter opt-in) + general FAQ |
+| `/privacy` | `privacy.html` | Privacy Policy (Hazel Media LLC) |
+| `/terms` | `terms.html` | Terms of Use |
 | `/404` | `404.html` | Not-found page (Vercel picks it up automatically) |
 
 Shared assets: `assets/css/styles.css`, `assets/js/main.js`, `assets/img/`. Photos in `media/`.
@@ -52,15 +54,24 @@ Everything below is marked in the HTML with `TODO`, `SLOT` or `PLACEHOLDER` comm
    swap for a wide still or a silent loop at `media/hero.mp4` (see `media/README.md`).
 3. **Contact form.** Create a free form at [formspree.io](https://formspree.io), then set
    `data-endpoint="https://formspree.io/f/XXXX"` on the `<form>` in `contact.html`. Until
-   then, submitting opens the visitor’s email app addressed to `data-mailto`. Update
-   `data-mailto` and every `hello@hazelwedding.co` too.
-4. **Story.** `about.html` has a stand-in first-person story marked `TODO`. Replace with
+   then, submitting opens the visitor’s email app addressed to `data-mailto`. The newsletter
+   checkbox posts as `newsletter=yes` alongside the inquiry.
+4. **Newsletter.** The signup blocks on `index.html` and `journal/index.html` are
+   `<form data-newsletter data-endpoint="">`. Point `data-endpoint` at a second Formspree form
+   (or your email tool’s form endpoint). Until then the button opens a pre-addressed email.
+5. **Google Analytics.** Paste the GA4 measurement ID into `GA_ID` at the top of §22 in
+   `assets/js/main.js`. Analytics loads only after a visitor accepts cookies; the choice is
+   stored in `localStorage` under `hazel-consent`. Any element with `data-cookie-settings`
+   reopens the preferences (there is one on the Privacy page).
+6. **Story.** `about.html` has a stand-in first-person story marked `TODO`. Replace with
    the real one.
-5. **Reviews.** The three quotes on the home page are labelled placeholders. Swap for real
+7. **Reviews.** The three quotes on the home page are labelled placeholders. Swap for real
    ones or delete the section.
-6. **Domain.** `hazelwedding.co` is used in canonical/OG tags, `sitemap.xml`, `robots.txt`
-   and the JSON-LD. Find-and-replace with the real domain. Add a 1200×630 `media/og.jpg`.
-7. **Social links** in the footer.
+8. **Domain.** `hazelwedding.com` and `planning@hazelwedding.com` are used throughout (they
+   match the legal pages). Add a 1200×630 `media/og.jpg` for link previews.
+9. **Social links** in the footer.
+10. **Legal.** `privacy.html` and `terms.html` carry an effective date of September 18, 2026.
+    Update the date in both files whenever the text changes.
 
 ## Design notes
 
@@ -76,6 +87,7 @@ fills and `--rose` for accent text (kept dark enough for 4.5:1 on cream). Type i
 | `v1.0` | Original two-person planning + photo/film site |
 | `v2.0` | Planning-only redesign for Madison: warm neutrals + blush, placeholder pricing, portfolio and photo/film pages removed |
 | `v2.1` | Blush hover states, all photos swapped for placeholder slots, capped image heights, JS additions (validation, header tuck, accordion, back-to-top) |
+| `v2.2` | Privacy Policy + Terms of Use pages, Hazel Media LLC footer, inquiry consent notice + newsletter opt-in, standalone newsletter signup, cookie banner with Google Analytics consent gate, domain → hazelwedding.com |
 
 ## Adding a journal post
 
@@ -94,5 +106,7 @@ All in `assets/js/main.js`, all opt-in via attributes, all disabled under
 - `data-parallax="0.1"` for gentle drift on scroll.
 - `.count[data-to]` animates numbers.
 - `.film[data-youtube]` click-to-load video slots (unused right now, kept for later).
-- Page curtain on load and on internal navigation; header shrinks on scroll;
-  in-page sub-nav highlights the current section.
+- Page curtain on load and on internal navigation; header shrinks on scroll and tucks away
+  on scroll-down; in-page sub-nav highlights the current section.
+- Inline form validation, animated FAQ accordion, magnetic buttons, back-to-top.
+- Cookie banner (§22) gates Google Analytics on consent; newsletter forms (§21).

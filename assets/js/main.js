@@ -458,4 +458,96 @@
     if (!rel.includes("noopener")) rel.push("noopener");
     a.rel = rel.join(" ");
   });
+
+  /* ------------------------------------------------------------------
+     21. Newsletter signup — <form data-newsletter data-endpoint="…">.
+         Same contract as the inquiry form: Formspree-style POST when an
+         endpoint is set, otherwise a pre-addressed email.
+     ------------------------------------------------------------------ */
+  $$("form[data-newsletter]").forEach((nf) => {
+    const status = $(".form-status", nf) || nf.appendChild(Object.assign(document.createElement("p"), { className: "form-status" }));
+    const input = $("input[type=email]", nf), btn = $("button[type=submit]", nf);
+    const say = (msg) => { status.textContent = msg; status.classList.add("show"); };
+    nf.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = new FormData(nf);
+      if (data.get("_gotcha")) return;
+      const v = (input.value || "").trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { input.focus(); say("Please enter a valid email address."); return; }
+      const endpoint = nf.dataset.endpoint;
+      if (!endpoint) {
+        const to = nf.dataset.mailto || "planning@hazelwedding.com";
+        location.href = `mailto:${to}?subject=${encodeURIComponent("Please add me to the Hazel Wedding list")}&body=${encodeURIComponent(v)}`;
+        say("Opening your email app — if nothing happens, write to " + to + " and I’ll add you.");
+        return;
+      }
+      btn.disabled = true; btn.textContent = "Subscribing…";
+      try {
+        const res = await fetch(endpoint, { method: "POST", body: data, headers: { Accept: "application/json" } });
+        if (!res.ok) throw new Error();
+        nf.reset(); say("You’re on the list. Thank you."); btn.textContent = "Subscribed";
+      } catch {
+        say("Something went wrong. Please try again, or email " + (nf.dataset.mailto || "planning@hazelwedding.com") + ".");
+        btn.disabled = false; btn.textContent = "Subscribe";
+      }
+    });
+  });
+
+  /* ------------------------------------------------------------------
+     22. Cookie consent + Google Analytics gate.
+         - Essential cookies always on; analytics only after consent.
+         - Choice stored in localStorage ("hazel-consent": {analytics, ts}).
+         - Set GA_ID to the property's measurement ID (G-XXXXXXXXXX). While
+           it is empty nothing loads, but the banner still records the choice.
+         - Any element with [data-cookie-settings] reopens the preferences.
+     ------------------------------------------------------------------ */
+  const GA_ID = "";                                            // TODO: paste the GA4 measurement ID
+  const KEY = "hazel-consent";
+  const readConsent = () => { try { return JSON.parse(localStorage.getItem(KEY) || "null"); } catch { return null; } };
+  const writeConsent = (c) => { try { localStorage.setItem(KEY, JSON.stringify({ ...c, ts: Date.now() })); } catch {} };
+  let gaLoaded = false;
+  const loadGA = () => {
+    if (gaLoaded || !GA_ID) return; gaLoaded = true;
+    const sc = document.createElement("script"); sc.async = true; sc.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+    document.head.appendChild(sc);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag("js", new Date());
+    window.gtag("config", GA_ID, { anonymize_ip: true });
+  };
+  const applyConsent = (c) => { if (c && c.analytics) loadGA(); };
+
+  const banner = document.createElement("aside");
+  banner.className = "cookie-banner"; banner.setAttribute("role", "region"); banner.setAttribute("aria-label", "Cookie preferences");
+  const privacyHref = (location.pathname.includes("/journal/") ? "../" : "./") + "privacy";
+  banner.innerHTML = `
+    <p>We use cookies and similar technologies, including Google Analytics, to understand how visitors use our website and improve the Hazel Wedding experience. You can accept or manage non-essential cookies. <a class="u" href="${privacyHref}">Privacy Policy</a></p>
+    <div class="cookie-prefs">
+      <div class="row"><div><b>Essential</b><small>Needed for the site to work: remembering this choice, keeping forms working.</small></div><button class="switch" type="button" role="switch" aria-checked="true" aria-label="Essential cookies, always on" disabled></button></div>
+      <div class="row"><div><b>Analytics</b><small>Google Analytics, so I can see which pages are useful. Never sold, never shared for advertising.</small></div><button class="switch" type="button" role="switch" aria-checked="false" aria-label="Analytics cookies" data-analytics></button></div>
+    </div>
+    <div class="cookie-actions">
+      <button class="btn btn-primary" type="button" data-accept>Accept</button>
+      <button class="btn btn-outline" type="button" data-manage>Manage Cookies</button>
+      <button class="btn btn-outline" type="button" data-save hidden>Save preferences</button>
+    </div>`;
+  body.appendChild(banner);
+  const analyticsSwitch = $("[data-analytics]", banner), saveBtn = $("[data-save]", banner), manageBtn = $("[data-manage]", banner);
+  const openBanner = (manage) => {
+    const c = readConsent();
+    analyticsSwitch.setAttribute("aria-checked", String(!!(c && c.analytics)));
+    banner.classList.toggle("manage", !!manage); saveBtn.hidden = !manage; manageBtn.hidden = !!manage;
+    banner.classList.add("show"); body.classList.add("cookie-open");
+  };
+  const closeBanner = () => { banner.classList.remove("show", "manage"); body.classList.remove("cookie-open"); };
+  const decide = (analytics) => { const c = { analytics: !!analytics }; writeConsent(c); applyConsent(c); closeBanner(); };
+  $("[data-accept]", banner).addEventListener("click", () => decide(true));
+  manageBtn.addEventListener("click", () => openBanner(true));
+  saveBtn.addEventListener("click", () => decide(analyticsSwitch.getAttribute("aria-checked") === "true"));
+  analyticsSwitch.addEventListener("click", () => analyticsSwitch.setAttribute("aria-checked", String(analyticsSwitch.getAttribute("aria-checked") !== "true")));
+  $$("[data-cookie-settings]").forEach((el) => el.addEventListener("click", (e) => { e.preventDefault(); openBanner(true); }));
+
+  const existing = readConsent();
+  if (existing) applyConsent(existing);
+  else setTimeout(() => openBanner(false), reduce ? 0 : 1400);   // let the curtain lift first
 })();

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://hazelwedding.co/</loc><priority>1.0</priority></url>
-  <url><loc>https://hazelwedding.co/planning</loc><priority>0.9</priority></url>
-  <url><loc>https://hazelwedding.co/journal</loc><priority>0.7</priority></url>
-  <url><loc>https://hazelwedding.co/journal/how-much-does-a-wedding-planner-cost</loc><priority>0.6</priority></url>
-  <url><loc>https://hazelwedding.co/journal/golden-hour-timeline</loc><priority>0.6</priority></url>
-  <url><loc>https://hazelwedding.co/journal/venue-coordinator-vs-wedding-planner</loc><priority>0.6</priority></url>
-  <url><loc>https://hazelwedding.co/about</loc><priority>0.7</priority></url>
-  <url><loc>https://hazelwedding.co/contact</loc><priority>0.8</priority></url>
+  <url><loc>https://hazelwedding.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://hazelwedding.com/planning</loc><priority>0.9</priority></url>
+  <url><loc>https://hazelwedding.com/journal</loc><priority>0.7</priority></url>
+  <url><loc>https://hazelwedding.com/journal/how-much-does-a-wedding-planner-cost</loc><priority>0.6</priority></url>
+  <url><loc>https://hazelwedding.com/journal/golden-hour-timeline</loc><priority>0.6</priority></url>
+  <url><loc>https://hazelwedding.com/journal/venue-coordinator-vs-wedding-planner</loc><priority>0.6</priority></url>
+  <url><loc>https://hazelwedding.com/about</loc><priority>0.7</priority></url>
+  <url><loc>https://hazelwedding.com/contact</loc><priority>0.8</priority></url>
+  <url><loc>https://hazelwedding.com/privacy</loc><priority>0.3</priority></url>
+  <url><loc>https://hazelwedding.com/terms</loc><priority>0.3</priority></url>
 </urlset>

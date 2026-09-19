@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Journal — Hazel Wedding Co.</title>
 <meta name="description" content="Notes on wedding planning, budgets, timelines and the days in between, from a working planner in Utah.">
-<link rel="canonical" href="https://hazelwedding.co/journal">
+<link rel="canonical" href="https://hazelwedding.com/journal">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Hazel Wedding Co.">
 <meta property="og:title" content="The Journal — Hazel Wedding Co.">
 <meta property="og:description" content="Notes on wedding planning, budgets, timelines and the days in between, from a working planner in Utah.">
-<meta property="og:image" content="https://hazelwedding.co/media/og.jpg">
-<meta property="og:url" content="https://hazelwedding.co/journal">
+<meta property="og:image" content="https://hazelwedding.com/media/og.jpg">
+<meta property="og:url" content="https://hazelwedding.com/journal">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f8f4ee">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
@@ -95,6 +95,27 @@
     <p class="price-foot">Want me to write about something? <a class="u" href="../contact">Ask.</a> Most of these posts started as a question from a couple.</p>
   </div>
 </section>
+
+<!-- ============================================================ NEWSLETTER
+     Set data-endpoint to a Formspree (or similar) endpoint. Until then the
+     button opens an email to planning@ with the address pre-filled. -->
+<section class="section-tight newsletter">
+  <div class="wrap newsletter-grid">
+    <div data-stagger>
+      <span class="eyebrow">The occasional note</span>
+      <h2 class="h2" data-split>Wedding planning without the overwhelm.</h2>
+      <p class="lede">Get occasional planning tips, inspiration, and Hazel Wedding updates delivered to your inbox.</p>
+    </div>
+    <form class="newsletter-form" data-newsletter data-endpoint="" data-mailto="planning@hazelwedding.com" novalidate>
+      <div class="field"><label for="nl-email">Email</label><input id="nl-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+      <input type="hidden" name="_subject" value="Newsletter signup — Hazel Wedding">
+      <button class="btn btn-primary" type="submit">Subscribe</button>
+      <p class="form-notice">By subscribing, you agree to receive marketing emails from Hazel Wedding. You may unsubscribe at any time. See our <a class="u" href="../privacy">Privacy Policy</a>.</p>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
 </main>
 
 <footer class="site-footer">
@@ -121,21 +142,23 @@
           <li><a href="../journal">Journal</a></li>
           <li><a href="../contact#faq">FAQ</a></li>
           <li><a href="../contact">Inquire</a></li>
+          <li><a href="../privacy">Privacy</a></li>
+          <li><a href="../terms">Terms</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Say hello</h4>
         <ul>
           <!-- TODO: replace with the real email + Instagram -->
-          <li><a href="mailto:hello@hazelwedding.co">hello@hazelwedding.co</a></li>
+          <li><a href="mailto:planning@hazelwedding.com">planning@hazelwedding.com</a></li>
           <li><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
           <li><a href="https://pinterest.com/" target="_blank" rel="noopener">Pinterest</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; <span data-year>2026</span> Hazel Wedding Co. All rights reserved.</span>
-      <span>Now booking 2026 &amp; 2027 weddings</span>
+      <span>&copy; <span data-year>2026</span> Hazel Media LLC. Hazel Wedding is a brand of Hazel Media LLC. All rights reserved.</span>
+      <span class="footer-legal"><a href="../privacy">Privacy Policy</a> · <a href="../terms">Terms of Use</a></span>
     </div>
   </div>
 </footer>

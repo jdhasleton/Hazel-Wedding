@@ -546,7 +546,7 @@ body.menu-open .menu-toggle .bars::after { top: 4.5px; transform: rotate(-45deg)
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 3vw, 3rem); }
 @media (max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
 .flow > * + * { margin-top: 1rem; }
-.hide { display: none !important; }
+.hide, [hidden] { display: none !important; }
 
 /* ==========================================================================
    Motion layer
@@ -717,3 +717,64 @@ body.menu-open .site-header.tucked { transform: none; }
   .js-fade .frame img:not(.loaded) { opacity: 1; }
   .btn, .nav-cta { transform: none !important; }
 }
+
+/* ==========================================================================
+   v2.2 — legal pages, newsletter, consent notices, cookie banner
+   ========================================================================== */
+
+/* legal articles: tighter than a journal post, headings anchor-able */
+.article.legal { font-size: 1.02rem; line-height: 1.7; }
+.article.legal h2 { font-size: clamp(1.45rem, 2.1vw, 1.8rem); margin: 2.5rem 0 0.8rem; }
+.article.legal p { margin-bottom: 1rem; }
+.article.legal .legal-address { font-family: var(--serif); font-size: 1.15rem; line-height: 1.5; }
+.cookie-manage-link { font: inherit; color: var(--rose-deep); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--blush-deep); padding: 0; }
+.footer-legal a { color: rgba(248,244,238,0.7); transition: color .3s; }
+.footer-legal a:hover { color: var(--blush); }
+
+/* consent copy under forms */
+.form-notice { grid-column: 1 / -1; font-size: 0.8rem; line-height: 1.55; color: var(--mute); max-width: 62ch; margin-top: 0.25rem; }
+.check-line { display: grid; grid-template-columns: auto 1fr; gap: 0.75rem; align-items: start; font-size: 0.92rem; color: var(--umber); cursor: pointer; line-height: 1.5; }
+.check-line input { appearance: none; -webkit-appearance: none; width: 1.1rem; height: 1.1rem; margin-top: 0.2rem; border: 1px solid var(--line-strong); border-radius: 3px; background: transparent; display: grid; place-items: center; transition: background .3s, border-color .3s; cursor: pointer; }
+.check-line input::before { content: ""; width: 0.55rem; height: 0.55rem; background: var(--ink); transform: scale(0); transition: transform .25s var(--ease); }
+.check-line input:checked { background: var(--blush); border-color: var(--blush); }
+.check-line input:checked::before { transform: scale(1); }
+.check-line input:focus-visible { outline: 2px solid var(--rose); outline-offset: 2px; }
+
+/* standalone newsletter block */
+.newsletter { background: var(--paper); border-block: 1px solid var(--line); }
+.newsletter-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+.newsletter-grid .h2 { margin-bottom: 1rem; text-wrap: balance; }
+.newsletter-grid .lede { max-width: 42ch; }
+.newsletter-form { display: grid; gap: 1.25rem; align-content: start; }
+.newsletter-form .btn { justify-self: start; }
+.newsletter-form .form-status { margin: 0; }
+@media (max-width: 900px) { .newsletter-grid { grid-template-columns: 1fr; } }
+
+/* cookie banner + preferences */
+.cookie-banner {
+  position: fixed; left: clamp(1rem, 3vw, 2rem); right: clamp(1rem, 3vw, 2rem); bottom: clamp(1rem, 3vw, 2rem); z-index: 90;
+  margin-inline: auto; max-width: 720px;
+  background: var(--cream); color: var(--ink); border: 1px solid var(--line-strong);
+  box-shadow: 0 30px 60px -30px rgba(42,34,30,0.45);
+  padding: 1.25rem 1.5rem; display: grid; gap: 1rem;
+  transform: translateY(calc(100% + 3rem)); opacity: 0; transition: transform .6s var(--ease), opacity .5s var(--ease);
+}
+.cookie-banner.show { transform: none; opacity: 1; }
+.cookie-banner p { font-size: 0.92rem; line-height: 1.55; color: var(--umber); }
+.cookie-banner p a { color: var(--rose-deep); }
+.cookie-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; }
+.cookie-actions .btn { padding: 0.75rem 1.3rem; font-size: 0.74rem; }
+.cookie-prefs { display: none; gap: 0.9rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.cookie-banner.manage .cookie-prefs { display: grid; }
+.cookie-prefs .row { display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: center; }
+.cookie-prefs .row b { display: block; font-weight: 600; font-size: 0.92rem; }
+.cookie-prefs .row small { display: block; color: var(--mute); font-size: 0.8rem; line-height: 1.45; }
+.switch { position: relative; width: 2.6rem; height: 1.45rem; border-radius: 999px; background: var(--linen); border: 0; cursor: pointer; transition: background .3s; flex: none; }
+.switch::after { content: ""; position: absolute; top: 0.18rem; left: 0.18rem; width: 1.1rem; height: 1.1rem; border-radius: 50%; background: var(--white); transition: transform .3s var(--ease); box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+.switch[aria-checked="true"] { background: var(--blush-deep); }
+.switch[aria-checked="true"]::after { transform: translateX(1.15rem); }
+.switch[disabled] { opacity: 0.6; cursor: default; }
+.to-top { bottom: clamp(1rem, 3vw, 2rem); }
+body.cookie-open .to-top { opacity: 0; pointer-events: none; }
+@media (max-width: 600px) { .cookie-banner { left: 0.75rem; right: 0.75rem; bottom: 0.75rem; padding: 1.1rem 1.15rem; } }
+@media (prefers-reduced-motion: reduce) { .cookie-banner { transition: none; } }
