@@ -1,5 +1,7 @@
 # Hazel Wedding Co. — website
 
+**Version 2.1** · September 2026
+
 Marketing site for Hazel Wedding Co., Madison Hasleton’s wedding planning and coordination
 studio in Utah. Static HTML/CSS/JS, no build step, deploys to Vercel as-is.
 
@@ -66,6 +68,14 @@ Warm neutrals with a blush accent. Palette lives at the top of `styles.css`:
 `--cream` page, `--paper` alternate sections, `--dark` for the dark bands, `--blush` for
 fills and `--rose` for accent text (kept dark enough for 4.5:1 on cream). Type is Fraunces
 (serif) and Figtree (sans) from Google Fonts.
+
+## Versions
+
+| Tag | What changed |
+| --- | --- |
+| `v1.0` | Original two-person planning + photo/film site |
+| `v2.0` | Planning-only redesign for Madison: warm neutrals + blush, placeholder pricing, portfolio and photo/film pages removed |
+| `v2.1` | Blush hover states, all photos swapped for placeholder slots, capped image heights, JS additions (validation, header tuck, accordion, back-to-top) |
 
 ## Adding a journal post
 
