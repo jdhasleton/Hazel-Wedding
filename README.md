@@ -1,6 +1,6 @@
 # Hazel Wedding Co. — website
 
-**Version 2.3.1** · September 2026
+**Version 2.3.2** · September 2026
 
 Marketing site for Hazel Wedding Co., Madison Hasleton’s wedding planning and coordination
 studio in Utah. Static HTML/CSS/JS, no build step, deploys to Vercel as-is.
@@ -52,11 +52,11 @@ Everything below is marked in the HTML with `TODO`, `SLOT` or `PLACEHOLDER` comm
    currently the light “cream” state (`<section class="hero hero-center is-light">`): when a
    photo or silent loop goes in, remove `is-light` and add `on-dark` to the header so the
    wordmark turns cream over the photo (see the comment in `index.html`).
-3. **Asset versions.** Stylesheet, script and SVG links carry `?v=2.3`. Bump the number in
+3. **Asset versions.** Stylesheet, script and SVG links carry `?v=2.3.2`. Bump the number in
    every HTML file whenever you change `styles.css` or `main.js`, or visitors may keep an
    older copy for up to an hour:
    ```bash
-   sed -i '' 's/?v=2\.3\.1/?v=2.4/g' *.html journal/*.html
+   sed -i '' 's/?v=2\.3\.2/?v=2.4/g' *.html journal/*.html
    ```
 4. **Contact form.** Create a free form at [formspree.io](https://formspree.io), then set
    `data-endpoint="https://formspree.io/f/XXXX"` on the `<form>` in `contact.html`. Until
@@ -81,10 +81,10 @@ Everything below is marked in the HTML with `TODO`, `SLOT` or `PLACEHOLDER` comm
 
 ## Design notes
 
-Warm neutrals with a blush accent. Palette lives at the top of `styles.css`:
-`--cream` page, `--paper` alternate sections, `--dark` for the dark bands, `--blush` for
-fills and `--rose` for accent text (kept dark enough for 4.5:1 on cream). Type is Fraunces
-(serif) and Figtree (sans) from Google Fonts.
+Warm neutrals with a rich hazel accent. Palette lives at the top of `styles.css`:
+`--cream` page, `--paper` alternate sections, `--dark` for the dark bands, and
+`--hazel` for fills. `--hazel-text` works on cream; `--hazel-light` stays legible
+on dark sections. Type is Fraunces (serif) and Figtree (sans) from Google Fonts.
 
 ## Versions
 
@@ -96,6 +96,7 @@ fills and `--rose` for accent text (kept dark enough for 4.5:1 on cream). Type i
 | `v2.2` | Privacy Policy + Terms of Use pages, Hazel Media LLC footer, inquiry consent notice + newsletter opt-in, standalone newsletter signup, cookie banner with Google Analytics consent gate, domain → hazelwedding.com |
 | `v2.3` | Cream hero with centred “Hazel Wedding” wordmark, cream/hazel favicon, asset URLs version-stamped (`?v=`) and the year-long `assets/` cache header relaxed so stylesheet changes actually reach visitors |
 | `v2.3.1` | Hero wordmark no longer clips the italic l and g |
+| `v2.3.2` | Smaller centered hero wordmark without split animation; cream and hazel favicon; rich hazel accents site-wide with lighter hazel on dark sections |
 
 ## Adding a journal post
 
