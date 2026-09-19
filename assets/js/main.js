@@ -168,7 +168,7 @@
     const has = !!(yt || vm || src);
     if (!has) film.classList.add("is-empty");
     film.innerHTML = `
-      ${poster ? `<img class="film-poster" src="${poster}" alt="" loading="lazy">` : `<div class="film-poster" style="background:linear-gradient(135deg,#4f5030,#3d3129)"></div>`}
+      ${poster ? `<img class="film-poster" src="${poster}" alt="" loading="lazy">` : `<div class="film-poster" style="background:linear-gradient(135deg,#3b2f28,#5a4a40)"></div>`}
       ${has ? "" : '<span class="film-empty-note">Film slot — add a YouTube ID</span>'}
       <button class="film-play" type="button" aria-label="Play ${title}"><span class="ring">${PLAY}</span></button>
       <div class="film-label"><span class="title">${title}</span><span>${sub}</span></div>`;
@@ -287,17 +287,17 @@
         const lines = [];
         data.forEach((v, k) => { if (!k.startsWith("_") && v) lines.push(`${k}: ${v}`); });
         location.href = `mailto:${to}?subject=${encodeURIComponent("Wedding inquiry — " + (data.get("names") || ""))}&body=${encodeURIComponent(lines.join("\n"))}`;
-        say("Opening your email app — if nothing happens, write to us directly at " + to + ".");
+        say("Opening your email app — if nothing happens, write to me directly at " + to + ".");
         return;
       }
       btn.disabled = true; btn.textContent = "Sending…";
       try {
         const res = await fetch(endpoint, { method: "POST", body: data, headers: { Accept: "application/json" } });
         if (!res.ok) throw new Error();
-        form.reset(); say("Thank you — your note is on its way. We reply to every inquiry within two business days.");
+        form.reset(); say("Thank you — your note is on its way. I reply to every inquiry within two business days.");
         btn.textContent = "Sent";
       } catch {
-        say("Something went wrong on our end. Please email us directly and we'll get right back to you.");
+        say("Something went wrong on my end. Please email me directly and I’ll get right back to you.");
         btn.disabled = false; btn.textContent = "Send inquiry";
       }
     });

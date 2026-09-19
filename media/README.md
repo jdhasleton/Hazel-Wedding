@@ -1,21 +1,28 @@
 # media/
 
-Put your own photos and films here. Suggested layout:
+Photos live here. Current layout:
 
 ```
 media/
-  hero.mp4              short silent loop for the home hero (1920×1080, ≤ 8 MB, no audio)
-  hero.jpg              poster shown before the video plays / on mobile
-  home/                 images used on the home page
+  home/
+    candlelit-stairway.webp     home hero (stand-in), planning collage, CTA background
+    bouquet-blue-ribbon.webp    Full-Service card, journal, planning CTA
+    basket-of-blooms.webp       Partial Planning card, planning "included" section
+    temple-spire.webp           Month-of card, about hero, journal
   planning/
-  photo-video/
-  portfolio/            gallery images (≈1600px wide) + *-full.jpg (≈2400px) for the lightbox
+    temple-inscription.webp     planning collage
   about/
-  journal/
+    bouquets-and-baskets.webp   home intro, contact aside
 ```
 
-Then point the `src` attributes in the HTML at these files, e.g.
-`src="media/portfolio/summit-01.jpg"`.
+Still needed (each slot shows its label on the page until the `src` changes):
 
-Video files (`*.mp4`, `*.mov`) larger than ~50 MB should not go in git.
-Host them on YouTube/Vimeo and use the `data-youtube` / `data-vimeo` slots instead.
+- A portrait of Madison — `about.html` (4:5)
+- A candid of Madison at work — `index.html` intro (4:5)
+- A ceremony or reception set-up you designed — `index.html` "Why hire a planner" (4:5)
+- A proper hero: either a wide still (≥ 2400px) or a short silent loop at `media/hero.mp4`
+  (1920×1080, ≤ 8 MB, no audio) — see the comment in `index.html`
+- `og.jpg` at 1200×630 for link previews
+
+Keep gallery images around 1600px wide. Video files larger than ~50 MB should not go in
+git; host them on YouTube/Vimeo and use the `data-youtube` / `data-vimeo` slots instead.
