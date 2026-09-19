@@ -275,8 +275,33 @@
   const form = $("form[data-inquiry]");
   if (form) {
     const status = $(".form-status", form) || form.appendChild(Object.assign(document.createElement("p"), { className: "form-status" }));
+    // Inline validation: required fields + a sane email. Messages sit under the field,
+    // clear as soon as the visitor starts typing, and the first bad field gets focus.
+    const fieldOf = (input) => input.closest(".field");
+    const mark = (input, msg) => {
+      const f = fieldOf(input); if (!f) return;
+      let err = $(".err", f);
+      if (!err) { err = document.createElement("span"); err.className = "err"; err.setAttribute("aria-live", "polite"); f.appendChild(err); }
+      err.textContent = msg || ""; f.classList.toggle("invalid", !!msg);
+      input.setAttribute("aria-invalid", msg ? "true" : "false");
+    };
+    const validate = () => {
+      let first = null;
+      $$("[required]", form).forEach((input) => {
+        const v = (input.value || "").trim();
+        let msg = "";
+        if (!v) msg = "Please fill this in.";
+        else if (input.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) msg = "That email doesn’t look right.";
+        mark(input, msg); if (msg && !first) first = input;
+      });
+      if (first) first.focus({ preventScroll: false });
+      return !first;
+    };
+    $$("[required]", form).forEach((input) => input.addEventListener("input", () => mark(input, "")));
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
+      if (!validate()) return;
       const data = new FormData(form);
       if (data.get("_gotcha")) return; // honeypot
       const endpoint = form.dataset.endpoint;
@@ -312,4 +337,125 @@
      13. Footer year
      ------------------------------------------------------------------ */
   $$("[data-year]").forEach((el) => { el.textContent = new Date().getFullYear(); });
+
+  /* ------------------------------------------------------------------
+     14. Header tuck — hides on scroll down, returns on scroll up.
+         Never while the mobile menu is open, never near the top.
+     ------------------------------------------------------------------ */
+  if (header && !reduce) {
+    let last = window.scrollY, acc = 0;
+    window.addEventListener("scroll", () => {
+      const y = window.scrollY, dy = y - last; last = y;
+      if (body.classList.contains("menu-open")) return;
+      if (y < 160) { header.classList.remove("tucked"); acc = 0; return; }
+      acc = Math.sign(dy) === Math.sign(acc) ? acc + dy : dy;   // only react to sustained movement
+      if (acc > 60) header.classList.add("tucked");
+      if (acc < -20) header.classList.remove("tucked");
+    }, { passive: true });
+  }
+
+  /* ------------------------------------------------------------------
+     15. Mobile menu — Escape closes it; a wide resize closes it too.
+     ------------------------------------------------------------------ */
+  const closeMenu = () => {
+    if (!body.classList.contains("menu-open")) return;
+    body.classList.remove("menu-open");
+    if (toggle) { toggle.setAttribute("aria-expanded", "false"); toggle.querySelector(".label").textContent = "Menu"; toggle.focus(); }
+  };
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMenu(); });
+  window.addEventListener("resize", () => { if (window.innerWidth > 900) closeMenu(); });
+
+  /* ------------------------------------------------------------------
+     16. Magnetic buttons — pills drift a few pixels toward the cursor.
+         Pointer devices only; skipped under reduced motion.
+     ------------------------------------------------------------------ */
+  if (!reduce && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    $$(".btn, .nav-cta").forEach((el) => {
+      const strength = 0.18, max = 6;
+      el.addEventListener("pointermove", (e) => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - (r.left + r.width / 2)) * strength;
+        const y = (e.clientY - (r.top + r.height / 2)) * strength;
+        el.style.setProperty("--mx", `${Math.max(-max, Math.min(max, x)).toFixed(1)}px`);
+        el.style.setProperty("--my", `${Math.max(-max, Math.min(max, y)).toFixed(1)}px`);
+      });
+      el.addEventListener("pointerleave", () => { el.style.setProperty("--mx", "0px"); el.style.setProperty("--my", "0px"); });
+    });
+  }
+
+  /* ------------------------------------------------------------------
+     17. FAQ accordion — one open at a time per group, with an animated
+         height so the page doesn't jump. Falls back to native <details>.
+     ------------------------------------------------------------------ */
+  $$(".faq").forEach((group) => {
+    const items = $$("details", group);
+    const animate = (d, open) => {
+      const bodyEl = $(".faq-body", d); if (!bodyEl || reduce) { d.open = open; return; }
+      d.classList.add("animating");
+      let finished = false;
+      const finish = () => {
+        if (finished) return; finished = true;
+        if (!open) d.open = false;
+        bodyEl.style.height = ""; bodyEl.style.opacity = "";
+        d.classList.remove("animating");
+      };
+      const onEnd = (e) => { if (e.propertyName === "height") { bodyEl.removeEventListener("transitionend", onEnd); finish(); } };
+      bodyEl.addEventListener("transitionend", onEnd);
+      setTimeout(finish, 600);                      // safety net if the transition never fires
+      if (open) {
+        d.open = true;
+        const h = bodyEl.scrollHeight;
+        bodyEl.style.height = "0px"; bodyEl.style.opacity = "0";
+        void bodyEl.offsetHeight;                   // flush so the 0 → h change actually transitions
+        bodyEl.style.height = `${h}px`; bodyEl.style.opacity = "1";
+      } else {
+        bodyEl.style.height = `${bodyEl.scrollHeight}px`; bodyEl.style.opacity = "1";
+        void bodyEl.offsetHeight;
+        bodyEl.style.height = "0px"; bodyEl.style.opacity = "0";
+      }
+    };
+    items.forEach((d) => {
+      $("summary", d).addEventListener("click", (e) => {
+        e.preventDefault();
+        if (d.classList.contains("animating")) return;
+        const willOpen = !d.open;
+        items.forEach((o) => { if (o !== d && o.open && !o.classList.contains("animating")) animate(o, false); });
+        animate(d, willOpen);
+      });
+    });
+  });
+
+  /* ------------------------------------------------------------------
+     18. Image fade-in — real photos ease in once decoded. Placeholders
+         are excluded in CSS so the slot labels stay visible.
+     ------------------------------------------------------------------ */
+  body.classList.add("js-fade");
+  $$(".frame img").forEach((img) => {
+    const done = () => img.classList.add("loaded");
+    if (img.complete && img.naturalWidth) done();
+    else { img.addEventListener("load", done, { once: true }); img.addEventListener("error", done, { once: true }); }
+  });
+
+  /* ------------------------------------------------------------------
+     19. Back to top — appears after the first screen, smooth-scrolls up.
+     ------------------------------------------------------------------ */
+  const top = document.createElement("button");
+  top.className = "to-top"; top.type = "button"; top.setAttribute("aria-label", "Back to top");
+  top.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 19V5m0 0l-6 6m6-6l6 6"/></svg>';
+  body.appendChild(top);
+  top.addEventListener("click", () => window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }));
+  const onTop = () => top.classList.toggle("show", window.scrollY > window.innerHeight * 1.2);
+  window.addEventListener("scroll", onTop, { passive: true }); onTop();
+
+  /* ------------------------------------------------------------------
+     20. External links — open in a new tab safely, without touching
+         the mailto/tel links or anything already marked.
+     ------------------------------------------------------------------ */
+  $$("a[href^='http']").forEach((a) => {
+    if (new URL(a.href).origin === location.origin) return;
+    if (!a.target) a.target = "_blank";
+    const rel = (a.rel || "").split(/\s+/).filter(Boolean);
+    if (!rel.includes("noopener")) rel.push("noopener");
+    a.rel = rel.join(" ");
+  });
 })();
