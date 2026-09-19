@@ -207,6 +207,14 @@ body.menu-open .menu-toggle .bars::after { top: 4.5px; transform: rotate(-45deg)
 .hero-center .hero-actions { justify-content: center; }
 .hero-center .hero-meta { margin-top: 0; }
 
+/* light hero (cream placeholder, dark type) — see the comment in index.html */
+.hero.is-light { color: var(--ink); }
+.hero.is-light .hero-media::after { background: linear-gradient(180deg, rgba(248,244,238,0.6) 0%, rgba(248,244,238,0.35) 50%, rgba(248,244,238,0.75) 100%); }
+.hero.is-light .hero-meta { border-top-color: var(--line-strong); color: var(--umber); }
+.hero.is-light .scroll-cue i { background: var(--umber); }
+.hero .wordmark { font-size: clamp(3.4rem, 12vw, 10.5rem); font-style: italic; font-weight: 300; letter-spacing: -0.035em; line-height: 0.95; max-width: none; margin: 0 auto 2.5rem; }
+.hero-center .display.wordmark { max-width: none; }
+
 /* page heroes (interior) */
 .page-hero { padding: clamp(9rem, 16vw, 13rem) 0 clamp(3rem, 6vw, 5rem); }
 .page-hero .h1 { max-width: 16ch; text-wrap: balance; }
