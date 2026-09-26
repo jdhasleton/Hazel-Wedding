@@ -1,6 +1,6 @@
 # Hazel Wedding Co. — website
 
-**Version 3.1** · September 2026
+**Version 3.1.1** · September 2026
 
 Marketing site for Hazel Wedding Co., Madison Hasleton’s wedding planning and coordination
 studio in Utah. Static HTML/CSS/JS, no build step, deploys to Vercel as-is.
@@ -9,7 +9,7 @@ studio in Utah. Static HTML/CSS/JS, no build step, deploys to Vercel as-is.
 
 | URL | File | What it is |
 | --- | --- | --- |
-| `/` | `index.html` | Home: full-bleed hero, intro, three collections, why a planner, process, reviews, journal teaser |
+| `/` | `index.html` | Home: video hero, intro, three collections, why a planner, process, journal teaser |
 | `/planning` | `planning.html` | Planning collections, month-of coordination, what’s included, process arc, à la carte, FAQ |
 | `/coordination` | `coordination.html` | Month-of and day-of wedding coordination in Utah |
 | `/journal` | `journal/index.html` | Blog index (filterable) |
@@ -47,7 +47,7 @@ Everything below is marked in the HTML with `TODO`, `SLOT` or `PLACEHOLDER` comm
 `grep -rn "TODO\|PLACEHOLDER\|X,XXX\|XXX" *.html journal/` finds them all.
 
 1. **Pricing.** Every price is a placeholder (`$XXX`, `$X,XXX`). They appear on
-   `index.html`, `planning.html`, `coordination.html`, and in pricing schema. Search for
+   `planning.html`, `coordination.html`, and in pricing schema. Search for
    `X,XXX` and `XXX` before launch.
 2. **Photos.** Home-page slots 1–10 now use the supplied photos in `media/slots/`.
    Slots 11–24 remain numbered placeholders until their images are supplied. The home hero
@@ -56,7 +56,7 @@ Everything below is marked in the HTML with `TODO`, `SLOT` or `PLACEHOLDER` comm
    The mountain image is still the social share image. To swap the hero video, export a
    silent 1080p H.264 MP4 at ~3,000 Kb/s under a **new file name** (`media/` is cached for a
    year) and update the `<img>`, `poster` and `<source>` in `index.html`.
-3. **Asset versions.** Stylesheet, script and SVG links carry `?v=3.0.1`. Bump the number in
+3. **Asset versions.** Stylesheet, script and SVG links carry `?v=3.1.1`. Bump the number in
    every HTML file whenever you change `styles.css` or `main.js`, or visitors may keep an
    older copy for up to an hour:
    ```bash
@@ -73,14 +73,10 @@ Everything below is marked in the HTML with `TODO`, `SLOT` or `PLACEHOLDER` comm
    `assets/js/main.js`. Analytics loads only after a visitor accepts cookies; the choice is
    stored in `localStorage` under `hazel-consent`. Any element with `data-cookie-settings`
    reopens the preferences (there is one on the Privacy page).
-7. **Story.** `about.html` has a stand-in first-person story marked `TODO`. Replace with
-   the real one.
-8. **Reviews.** The three quotes on the home page are labelled placeholders. Swap for real
-   ones or delete the section.
-9. **Domain.** `hazelwedding.com` and `planning@hazelwedding.com` are used throughout (they
+7. **Domain.** `hazelwedding.com` and `planning@hazelwedding.com` are used throughout (they
    match the legal pages). Add a 1200×630 `media/og.jpg` for link previews.
-10. **Social links** in the footer.
-11. **Legal.** `privacy.html` and `terms.html` carry an effective date of September 18, 2026.
+8. **Social links** in the footer.
+9. **Legal.** `privacy.html` and `terms.html` carry their effective dates in the page headers.
     Update the date in both files whenever the text changes.
 
 ## Design notes
@@ -109,6 +105,7 @@ on dark sections. Type is Fraunces (serif) and Figtree (sans) from Google Fonts.
 | `v3.0` | Priority-one SEO package: expanded home and planning copy, dedicated coordination page, four supporting journal posts, service-area and FAQ content, structured data, internal links and sitemap updates |
 | `v3.0.1` | Restored the Fraunces serif on the home hero wordmark after its SEO-safe element change |
 | `v3.1` | Home hero is now an 11-second silent video loop (`media/hero/hero-loop-v1.mp4`, audio stripped, fast-start) with its first frame as the poster; still image shown instead under reduced motion or Data Saver |
+| `v3.1.1` | Rewrote the home page around “Make Forever Effortless,” refreshed the three service paths, removed pricing from the home page, and removed all testimonial content |
 
 ## Adding a journal post
 

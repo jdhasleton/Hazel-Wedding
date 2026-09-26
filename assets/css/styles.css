@@ -478,18 +478,9 @@ body.menu-open .menu-toggle .bars::after { top: 4.5px; transform: rotate(-45deg)
 .filters button { padding: 0.55rem 1.1rem; border-radius: 999px; border: 1px solid var(--line-strong); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; transition: background .3s, color .3s, border-color .3s; }
 .filters button:hover, .filters button.active { background: var(--hazel); color: var(--cream); border-color: var(--hazel); }
 
-/* ---------- testimonials ---------- */
-.quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.5rem, 3vw, 3rem); }
-.quote-card { padding-top: 1.5rem; border-top: 1px solid var(--line-strong); }
-.section-dark .quote-card { border-color: rgba(255,255,255,0.22); }
-.quote-card blockquote { margin: 0 0 1.5rem; font-family: var(--serif); font-size: clamp(1.25rem, 1.6vw, 1.5rem); line-height: 1.4; font-weight: 300; font-style: italic; }
-.quote-card cite { font-style: normal; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: var(--hazel-text); }
-.section-dark .quote-card cite { color: var(--hazel-light); }
-.quote-card cite small { display: block; color: var(--mute); font-weight: 500; letter-spacing: 0.1em; margin-top: 0.3rem; }
-.section-dark .quote-card cite small { color: rgba(248,244,238,0.55); }
+/* ---------- promise statement ---------- */
 .big-quote { text-align: center; }
 .big-quote blockquote { margin: 0 auto 2rem; max-width: 26ch; font-family: var(--serif); font-size: clamp(1.9rem, 3.6vw, 3.1rem); line-height: 1.2; font-weight: 300; font-style: italic; text-wrap: balance; }
-@media (max-width: 900px) { .quotes { grid-template-columns: 1fr; } }
 
 /* ---------- marquee ---------- */
 .marquee { overflow: hidden; border-block: 1px solid var(--line); padding: 1.1rem 0; white-space: nowrap; background: var(--paper); }
