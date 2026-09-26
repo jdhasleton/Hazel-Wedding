@@ -1,6 +1,6 @@
 # Hazel Wedding Co. — website
 
-**Version 2.4.1** · September 2026
+**Version 2.5** · September 2026
 
 Marketing site for Hazel Wedding Co., Madison Hasleton’s wedding planning and coordination
 studio in Utah. Static HTML/CSS/JS, no build step, deploys to Vercel as-is.
@@ -56,7 +56,7 @@ Everything below is marked in the HTML with `TODO`, `SLOT` or `PLACEHOLDER` comm
    every HTML file whenever you change `styles.css` or `main.js`, or visitors may keep an
    older copy for up to an hour:
    ```bash
-   sed -i '' 's/?v=2\.4\.1/?v=2.5/g' *.html journal/*.html
+   sed -i '' 's/?v=2\.5/?v=2.6/g' *.html journal/*.html
    ```
 4. **Contact form.** Create a free form at [formspree.io](https://formspree.io), then set
    `data-endpoint="https://formspree.io/f/XXXX"` on the `<form>` in `contact.html`. Until
@@ -100,6 +100,7 @@ on dark sections. Type is Fraunces (serif) and Figtree (sans) from Google Fonts.
 | `v2.3.3` | TEMPORARY numbered badges (1–24) on every image slot so photos can be matched to them — remove the `.img-num` spans and CSS block once photos are in |
 | `v2.4` | Home hero photo (couple on the dunes) with the wordmark split either side of them — bold, wider-spaced “Hazel” \| couple \| “Wedding”, a charcoal button under each word, centred scroll cue; words stack above the couple below 960px |
 | `v2.4.1` | Dune hero photo removed (back to the cream placeholder, slot 1); “Hazel Wedding” and both buttons centred together again — wordmark stays bold with wider spacing, both buttons charcoal, scroll cue centred |
+| `v2.5` | Home: full-width photo band (couple on the dunes, slot 1) directly under the cream hero, nothing laid over it; 16:9 on desktop (capped height), 4:5 crop on phones |
 
 ## Adding a journal post
 
