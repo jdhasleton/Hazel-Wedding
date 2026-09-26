@@ -14,11 +14,11 @@
 <meta property="og:url" content="https://hazelwedding.com">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f8f4ee">
-<link rel="icon" href="./assets/img/favicon.svg?v=2.4" type="image/svg+xml">
+<link rel="icon" href="./assets/img/favicon.svg?v=2.4.1" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400;1,9..144,600&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/css/styles.css?v=2.4">
+<link rel="stylesheet" href="./assets/css/styles.css?v=2.4.1">
 <script>document.documentElement.classList.remove("no-js");</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Hazel Wedding Co.", "description": "Wedding planning and coordination studio.", "url": "https://hazelwedding.com", "email": "planning@hazelwedding.com", "founder": {"@type": "Person", "name": "Madison Hasleton"}, "areaServed": ["Utah", "United States"], "address": {"@type": "PostalAddress", "addressRegion": "UT", "addressCountry": "US"}, "priceRange": "$$$", "sameAs": ["https://instagram.com/"]}</script>
 </head>
@@ -49,23 +49,22 @@
      silent loop exists. To use video: drop it at media/hero.mp4 and
      uncomment the <source>. The poster image fades out once it plays.
      ============================================================ -->
-<section class="hero hero-center is-light has-photo">
-  <!-- HERO STATE: `is-light` = dark type over a light image (the dune photo's pale sky).
-       `has-photo` drops the cream wash and lays the wordmark out as "Hazel" | couple | "Wedding".
-       The couple sits just right of centre in the photo; object-position in styles.css keeps
-       them centred on screen, and --couple sets the gap between the two words. -->
-  <div class="hero-media" aria-hidden="true">
-    <img src="./media/hero-dunes-2000.jpg" srcset="./media/hero-dunes-1200.jpg 1200w, ./media/hero-dunes-2000.jpg 2000w" sizes="100vw" width="2000" height="1052" alt="" fetchpriority="high">
+<section class="hero hero-center is-light">
+  <!-- HERO STATE: `is-light` = cream placeholder with dark type (current).
+       When a real photo or loop goes in: point the <img> at it (or add the <source>),
+       remove `is-light` from this section and add `on-dark` to <header class="site-header">
+       so the type turns cream over the photo. -->
+  <span class="img-num" aria-hidden="true">1</span><div class="hero-media" aria-hidden="true">
+    <img src="./assets/img/placeholder.svg?v=2.4.1" alt="" fetchpriority="high">
     <video data-hero-video muted loop playsinline autoplay preload="metadata" poster="">
       <!-- <source src="media/hero.mp4" type="video/mp4"> -->
     </video>
   </div>
   <div class="wrap hero-inner">
     <div class="hero-copy">
-      <h1 class="display wordmark"><span class="wm-word">Hazel</span><span class="wm-gap" aria-hidden="true"></span><span class="wm-word">Wedding</span></h1>
+      <h1 class="display wordmark">Hazel Wedding</h1>
       <div class="hero-actions">
         <a class="btn btn-primary" href="./contact">Check your date</a>
-        <span class="wm-gap" aria-hidden="true"></span>
         <a class="btn btn-primary" href="./planning">Planning collections</a>
       </div>
     </div>
@@ -88,11 +87,11 @@
   <div class="wrap intro-grid">
     <div class="intro-stack">
       <div class="frame main r-3-4" data-reveal="clip" data-slot="A bride and her bridesmaids holding garden bouquets and woven baskets of flowers">
-        <img src="./assets/img/placeholder.svg?v=2.4" alt="A bride and her bridesmaids holding garden bouquets and woven baskets of flowers" loading="lazy"><span class="img-num" aria-hidden="true">2</span>
+        <img src="./assets/img/placeholder.svg?v=2.4.1" alt="A bride and her bridesmaids holding garden bouquets and woven baskets of flowers" loading="lazy"><span class="img-num" aria-hidden="true">2</span>
       </div>
       <div class="frame small r-4-5" data-reveal="clip" style="--d:.25s" data-slot="Madison, at work">
         <!-- SLOT: a candid of Madison on a wedding day (portrait, 4:5) -->
-        <img src="./assets/img/placeholder.svg?v=2.4" alt="Madison Hasleton coordinating a wedding" loading="lazy"><span class="img-num" aria-hidden="true">3</span>
+        <img src="./assets/img/placeholder.svg?v=2.4.1" alt="Madison Hasleton coordinating a wedding" loading="lazy"><span class="img-num" aria-hidden="true">3</span>
       </div>
     </div>
     <div class="intro-copy" data-stagger>
@@ -117,7 +116,7 @@
     </div>
     <div class="services" data-stagger="0.12">
       <a class="service" href="./planning#collections">
-        <div class="frame r-4-5" data-reveal="clip" data-slot="A pastel bouquet of roses, delphinium and sweet pea beside a cake wrapped in blue ribbon"><img src="./assets/img/placeholder.svg?v=2.4" alt="A pastel bouquet of roses, delphinium and sweet pea beside a cake wrapped in blue ribbon" loading="lazy"><span class="img-num" aria-hidden="true">4</span></div>
+        <div class="frame r-4-5" data-reveal="clip" data-slot="A pastel bouquet of roses, delphinium and sweet pea beside a cake wrapped in blue ribbon"><img src="./assets/img/placeholder.svg?v=2.4.1" alt="A pastel bouquet of roses, delphinium and sweet pea beside a cake wrapped in blue ribbon" loading="lazy"><span class="img-num" aria-hidden="true">4</span></div>
         <span class="num">No. 01</span>
         <h3>Full-Service Planning</h3>
         <p>Everything from the venue search to the send-off. For couples who want a planner in their corner for the whole engagement, and a full team on the day.</p>
@@ -126,7 +125,7 @@
         <span class="link-arrow">See what’s included</span>
       </a>
       <a class="service" href="./planning#collections">
-        <div class="frame r-4-5" data-reveal="clip" style="--d:.12s" data-slot="A woven basket overflowing with ranunculus, lisianthus and garden roses"><img src="./assets/img/placeholder.svg?v=2.4" alt="A woven basket overflowing with ranunculus, lisianthus and garden roses" loading="lazy"><span class="img-num" aria-hidden="true">5</span></div>
+        <div class="frame r-4-5" data-reveal="clip" style="--d:.12s" data-slot="A woven basket overflowing with ranunculus, lisianthus and garden roses"><img src="./assets/img/placeholder.svg?v=2.4.1" alt="A woven basket overflowing with ranunculus, lisianthus and garden roses" loading="lazy"><span class="img-num" aria-hidden="true">5</span></div>
         <span class="num">No. 02</span>
         <h3>Partial Planning</h3>
         <p>You lead the vision and make the calls. I source the vendors, read the contracts, design the room, and run your wedding day start to finish.</p>
@@ -134,7 +133,7 @@
         <span class="link-arrow">See what’s included</span>
       </a>
       <a class="service" href="./planning#coordination">
-        <div class="frame r-4-5" data-reveal="clip" style="--d:.24s" data-slot="A white temple spire against a bright sky, framed by leaves"><img src="./assets/img/placeholder.svg?v=2.4" alt="A white temple spire against a bright sky, framed by leaves" loading="lazy"><span class="img-num" aria-hidden="true">6</span></div>
+        <div class="frame r-4-5" data-reveal="clip" style="--d:.24s" data-slot="A white temple spire against a bright sky, framed by leaves"><img src="./assets/img/placeholder.svg?v=2.4.1" alt="A white temple spire against a bright sky, framed by leaves" loading="lazy"><span class="img-num" aria-hidden="true">6</span></div>
         <span class="num">No. 03</span>
         <h3>Month-of Coordination</h3>
         <p>You’ve planned it. Six weeks out I take over every vendor conversation, build the minute-by-minute timeline, and hold it all together on the day.</p>
@@ -150,7 +149,7 @@
   <div class="wrap feature">
     <div class="feature-media frame r-4-5" data-reveal="clip" data-parallax="0.08" data-slot="Ceremony set-up, chairs and florals">
       <!-- SLOT: a ceremony or reception set-up you designed (portrait 4:5) -->
-      <img src="./assets/img/placeholder.svg?v=2.4" alt="Ceremony chairs and florals set for a wedding" loading="lazy"><span class="img-num" aria-hidden="true">7</span>
+      <img src="./assets/img/placeholder.svg?v=2.4.1" alt="Ceremony chairs and florals set for a wedding" loading="lazy"><span class="img-num" aria-hidden="true">7</span>
     </div>
     <div class="feature-copy" data-stagger>
       <span class="eyebrow">Why hire a planner</span>
@@ -216,7 +215,7 @@
     <div class="posts" data-stagger="0.1">
       <article class="post-card">
         <a href="./journal/how-much-does-a-wedding-planner-cost">
-          <div class="frame r-4-3" data-slot="Pastel bouquet beside a ribbon-wrapped cake"><img src="./assets/img/placeholder.svg?v=2.4" alt="Pastel bouquet beside a ribbon-wrapped cake" loading="lazy"><span class="img-num" aria-hidden="true">8</span></div>
+          <div class="frame r-4-3" data-slot="Pastel bouquet beside a ribbon-wrapped cake"><img src="./assets/img/placeholder.svg?v=2.4.1" alt="Pastel bouquet beside a ribbon-wrapped cake" loading="lazy"><span class="img-num" aria-hidden="true">8</span></div>
           <div class="cat">Planning <time datetime="2026-09-02">Sep 2026</time></div>
           <h3>What a wedding planner actually costs in 2026 (and what you get)</h3>
           <p>Full-service, partial, month-of: a plain-English breakdown of the tiers, the national numbers, and how to pick.</p>
@@ -224,7 +223,7 @@
       </article>
       <article class="post-card">
         <a href="./journal/golden-hour-timeline">
-          <div class="frame r-4-3" data-slot="Pillar candles in glass along a staircase wrapped in greenery"><img src="./assets/img/placeholder.svg?v=2.4" alt="Pillar candles in glass along a staircase wrapped in greenery" loading="lazy"><span class="img-num" aria-hidden="true">9</span></div>
+          <div class="frame r-4-3" data-slot="Pillar candles in glass along a staircase wrapped in greenery"><img src="./assets/img/placeholder.svg?v=2.4.1" alt="Pillar candles in glass along a staircase wrapped in greenery" loading="lazy"><span class="img-num" aria-hidden="true">9</span></div>
           <div class="cat">Timelines <time datetime="2026-08-19">Aug 2026</time></div>
           <h3>How I build a timeline around the light</h3>
           <p>Why I schedule your portraits before I schedule anything else, with a sample summer and winter timeline.</p>
@@ -232,7 +231,7 @@
       </article>
       <article class="post-card">
         <a href="./journal/venue-coordinator-vs-wedding-planner">
-          <div class="frame r-4-3" data-slot="White temple spire against the sky"><img src="./assets/img/placeholder.svg?v=2.4" alt="White temple spire against the sky" loading="lazy"><span class="img-num" aria-hidden="true">10</span></div>
+          <div class="frame r-4-3" data-slot="White temple spire against the sky"><img src="./assets/img/placeholder.svg?v=2.4.1" alt="White temple spire against the sky" loading="lazy"><span class="img-num" aria-hidden="true">10</span></div>
           <div class="cat">Planning <time datetime="2026-08-05">Aug 2026</time></div>
           <h3>Do you need a planner if your venue has a coordinator?</h3>
           <p>What a venue coordinator actually does, what they don’t, and how to tell which one you need.</p>
@@ -266,7 +265,7 @@
 
 <!-- ============================================================ CTA -->
 <section class="cta">
-  <span class="img-num" aria-hidden="true">11</span><div class="bg" aria-hidden="true"><img src="./assets/img/placeholder-dark.svg?v=2.4" alt="" loading="lazy" data-parallax="0.1"></div>
+  <span class="img-num" aria-hidden="true">11</span><div class="bg" aria-hidden="true"><img src="./assets/img/placeholder-dark.svg?v=2.4.1" alt="" loading="lazy" data-parallax="0.1"></div>
   <div class="wrap">
     <span class="eyebrow center light">Now booking 2026 &amp; 2027</span>
     <h2 class="h1" data-split>Let’s find out if your date is open.</h2>
@@ -324,6 +323,6 @@
   </div>
 </footer>
 
-<script src="./assets/js/main.js?v=2.4" defer></script>
+<script src="./assets/js/main.js?v=2.4.1" defer></script>
 </body>
 </html>
