@@ -48,10 +48,10 @@ Everything below is marked in the HTML with `TODO`, `SLOT` or `PLACEHOLDER` comm
 1. **Pricing.** Every price is a placeholder (`$XXX`, `$X,XXX`). They appear on
    `index.html` (three “From” lines), `planning.html` (three tiers, two coordination
    cards, the à la carte list) and nowhere else. Search for `X,XXX` and `XXX`.
-2. **Photos.** Every image slot shows a label until its `src` changes. The home hero is
-   currently the light “cream” state (`<section class="hero hero-center is-light">`): when a
-   photo or silent loop goes in, remove `is-light` and add `on-dark` to the header so the
-   wordmark turns cream over the photo (see the comment in `index.html`).
+2. **Photos.** Home-page slots 1–10 now use the supplied photos in `media/slots/`.
+   Slots 11–24 remain numbered placeholders until their images are supplied. The home hero
+   is in photo mode (no `is-light` class) and the header uses `on-dark` so the wordmark and
+   navigation remain cream over the mountain image.
 3. **Asset versions.** Stylesheet, script and SVG links carry `?v=2.3.2`. Bump the number in
    every HTML file whenever you change `styles.css` or `main.js`, or visitors may keep an
    older copy for up to an hour:
