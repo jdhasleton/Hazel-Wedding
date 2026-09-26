@@ -8,7 +8,8 @@ Suggested layout:
 
 ```
 media/
-  hero.jpg              home hero still (≥ 2400px wide) — or hero.mp4, see index.html
+  hero/                 home hero loop (hero-loop-vN.mp4) + its first-frame poster (.webp)
+  slots/                supplied photos for image slots
   home/                 intro portrait, three collection cards, "why a planner" set-up shot, CTA
   planning/             collage + "included" image
   about/                wide image, Madison's portrait

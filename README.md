@@ -1,6 +1,6 @@
 # Hazel Wedding Co. — website
 
-**Version 3.0.1** · September 2026
+**Version 3.1** · September 2026
 
 Marketing site for Hazel Wedding Co., Madison Hasleton’s wedding planning and coordination
 studio in Utah. Static HTML/CSS/JS, no build step, deploys to Vercel as-is.
@@ -51,8 +51,11 @@ Everything below is marked in the HTML with `TODO`, `SLOT` or `PLACEHOLDER` comm
    `X,XXX` and `XXX` before launch.
 2. **Photos.** Home-page slots 1–10 now use the supplied photos in `media/slots/`.
    Slots 11–24 remain numbered placeholders until their images are supplied. The home hero
-   is in photo mode (no `is-light` class) and the header uses `on-dark` so the wordmark and
-   navigation remain cream over the mountain image.
+   is in video mode (no `is-light` class; `media/hero/hero-loop-v1.mp4` with its first frame
+   as poster) and the header uses `on-dark` so the wordmark and navigation stay cream over it.
+   The mountain image is still the social share image. To swap the hero video, export a
+   silent 1080p H.264 MP4 at ~3,000 Kb/s under a **new file name** (`media/` is cached for a
+   year) and update the `<img>`, `poster` and `<source>` in `index.html`.
 3. **Asset versions.** Stylesheet, script and SVG links carry `?v=3.0.1`. Bump the number in
    every HTML file whenever you change `styles.css` or `main.js`, or visitors may keep an
    older copy for up to an hour:
@@ -105,6 +108,7 @@ on dark sections. Type is Fraunces (serif) and Figtree (sans) from Google Fonts.
 | `v2.5.1` | Photo band removed again; home is back to the cream hero (slot 1 badge restored) |
 | `v3.0` | Priority-one SEO package: expanded home and planning copy, dedicated coordination page, four supporting journal posts, service-area and FAQ content, structured data, internal links and sitemap updates |
 | `v3.0.1` | Restored the Fraunces serif on the home hero wordmark after its SEO-safe element change |
+| `v3.1` | Home hero is now an 11-second silent video loop (`media/hero/hero-loop-v1.mp4`, audio stripped, fast-start) with its first frame as the poster; still image shown instead under reduced motion or Data Saver |
 
 ## Adding a journal post
 

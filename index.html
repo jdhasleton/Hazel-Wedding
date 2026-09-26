@@ -14,11 +14,11 @@
 <meta property="og:url" content="https://hazelwedding.com">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f8f4ee">
-<link rel="icon" href="./assets/img/favicon.svg?v=3.0.1" type="image/svg+xml">
+<link rel="icon" href="./assets/img/favicon.svg?v=3.1" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400;1,9..144,600&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/css/styles.css?v=3.0.1">
+<link rel="stylesheet" href="./assets/css/styles.css?v=3.1">
 <script>document.documentElement.classList.remove("no-js");</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","additionalType":"https://schema.org/ProfessionalService","name":"Hazel Wedding Co.","description":"Wedding planning and coordination in Salt Lake City and across Utah: full-service planning, partial planning and month-of coordination.","url":"https://hazelwedding.com","email":"planning@hazelwedding.com","founder":{"@type":"Person","name":"Madison Hasleton"},"address":{"@type":"PostalAddress","addressLocality":"Salt Lake City","addressRegion":"UT","addressCountry":"US"},"areaServed":[{"@type":"City","name":"Salt Lake City"},{"@type":"State","name":"Utah"}],"priceRange":"$$$"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where in Utah do you plan weddings?","acceptedAnswer":{"@type":"Answer","text":"I'm based in Salt Lake City, and every collection includes weddings within 60 miles of the city. Weddings further away, in Utah or out of state, are welcome and quoted separately for travel."}},{"@type":"Question","name":"What's the difference between a wedding planner and a wedding coordinator?","acceptedAnswer":{"@type":"Answer","text":"A planner helps you make the decisions over months: budget, vendors, design and logistics. A coordinator carries out decisions you've already made, starting about six weeks before the wedding and running through the day. Partial and Full-Service collections include both. Month-of coordination is only the second half."}},{"@type":"Question","name":"How much does a wedding planner cost in Utah?","acceptedAnswer":{"@type":"Answer","text":"It depends on how much you hand over. Coordination costs the least, and full-service costs the most because it covers the whole engagement. Current prices are listed on the planning page."}},{"@type":"Question","name":"How far ahead should we book a Utah wedding planner?","acceptedAnswer":{"@type":"Answer","text":"Popular Utah dates, especially Saturdays from May through October, tend to book 10 to 14 months out for full-service and partial planning. Month-of coordination can be booked as late as four months before the wedding."}}]}</script>
@@ -47,17 +47,19 @@
 
 <!-- ============================================================
      HERO
-     The mountain image is the current hero. To use video instead: drop it
-     at media/hero.mp4 and uncomment the <source>. The poster image fades
-     out once the video plays.
+     Video hero: an 11-second silent loop (media/hero/). The <img> is the
+     video's first frame, shown while it loads and to visitors who prefer
+     reduced motion or have Data Saver on. To replace the video, export a new
+     file with a NEW name (media/ is cached for a year) and update the img,
+     poster and source below.
      ============================================================ -->
 <section class="hero hero-center">
-  <!-- PHOTO HERO STATE: no `is-light` class; the header uses `on-dark` so
-       the navigation and hero type stay cream over the image. -->
+  <!-- PHOTO/VIDEO HERO STATE: no `is-light` class; the header uses `on-dark` so
+       the navigation and hero type stay cream over the footage. -->
   <div class="hero-media" aria-hidden="true">
-    <img src="./media/slots/01-mountain-hero.jpg" alt="" fetchpriority="high">
-    <video data-hero-video muted loop playsinline autoplay preload="metadata" poster="">
-      <!-- <source src="media/hero.mp4" type="video/mp4"> -->
+    <img src="./media/hero/hero-loop-v1.webp" alt="" width="1920" height="1080" fetchpriority="high">
+    <video data-hero-video muted loop playsinline autoplay preload="auto" poster="./media/hero/hero-loop-v1.webp" disablepictureinpicture disableremoteplayback>
+      <source src="./media/hero/hero-loop-v1.mp4" type="video/mp4">
     </video>
   </div>
   <div class="wrap hero-inner">
@@ -293,7 +295,7 @@
 
 <!-- ============================================================ CTA -->
 <section class="cta">
-  <span class="img-num" aria-hidden="true">11</span><div class="bg" aria-hidden="true"><img src="./assets/img/placeholder-dark.svg?v=3.0.1" alt="" loading="lazy" data-parallax="0.1"></div>
+  <span class="img-num" aria-hidden="true">11</span><div class="bg" aria-hidden="true"><img src="./assets/img/placeholder-dark.svg?v=3.1" alt="" loading="lazy" data-parallax="0.1"></div>
   <div class="wrap">
     <span class="eyebrow center light">Now booking 2026 &amp; 2027</span>
     <h2 class="h1" data-split>Let’s find out if your date is open.</h2>
@@ -351,6 +353,6 @@
   </div>
 </footer>
 
-<script src="./assets/js/main.js?v=3.0.1" defer></script>
+<script src="./assets/js/main.js?v=3.1" defer></script>
 </body>
 </html>

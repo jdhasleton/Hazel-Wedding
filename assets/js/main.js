@@ -196,12 +196,14 @@
 
   /* ------------------------------------------------------------------
      8. Hero background video — <video data-hero-video src="...">. If the
-        source fails (e.g. not uploaded yet) fall back to the poster image.
+        source fails (e.g. not uploaded yet), the visitor prefers reduced
+        motion, or Data Saver is on, fall back to the still image.
      ------------------------------------------------------------------ */
+  const saveData = !!(navigator.connection && navigator.connection.saveData);
   $$("video[data-hero-video]").forEach((v) => {
     const fallback = $(".hero-media img");
-    const fail = () => { v.remove(); if (fallback) fallback.hidden = false; };
-    if (!v.getAttribute("src") && !v.querySelector("source")) { fail(); return; }
+    const fail = () => { v.pause(); v.removeAttribute("autoplay"); v.remove(); if (fallback) fallback.hidden = false; };
+    if (reduce || saveData || (!v.getAttribute("src") && !v.querySelector("source"))) { fail(); return; }
     v.addEventListener("error", fail, true);
     v.addEventListener("canplay", () => { if (fallback) fallback.hidden = true; v.play().catch(() => {}); }, { once: true });
   });
