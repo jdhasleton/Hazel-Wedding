@@ -1,6 +1,6 @@
 # Hazel Wedding Co. — website
 
-**Version 2.5.1** · September 2026
+**Version 3.0** · September 2026
 
 Marketing site for Hazel Wedding Co., Madison Hasleton’s wedding planning and coordination
 studio in Utah. Static HTML/CSS/JS, no build step, deploys to Vercel as-is.
@@ -11,8 +11,9 @@ studio in Utah. Static HTML/CSS/JS, no build step, deploys to Vercel as-is.
 | --- | --- | --- |
 | `/` | `index.html` | Home: full-bleed hero, intro, three collections, why a planner, process, reviews, journal teaser |
 | `/planning` | `planning.html` | Planning collections, month-of coordination, what’s included, process arc, à la carte, FAQ |
+| `/coordination` | `coordination.html` | Month-of and day-of wedding coordination in Utah |
 | `/journal` | `journal/index.html` | Blog index (filterable) |
-| `/journal/<slug>` | `journal/*.html` | Blog posts (three included) |
+| `/journal/<slug>` | `journal/*.html` | Blog posts (seven included) |
 | `/about` | `about.html` | Madison’s story, values |
 | `/contact` | `contact.html` | Inquiry form (with consent notice + newsletter opt-in) + general FAQ |
 | `/privacy` | `privacy.html` | Privacy Policy (Hazel Media LLC) |
@@ -46,13 +47,13 @@ Everything below is marked in the HTML with `TODO`, `SLOT` or `PLACEHOLDER` comm
 `grep -rn "TODO\|PLACEHOLDER\|X,XXX\|XXX" *.html journal/` finds them all.
 
 1. **Pricing.** Every price is a placeholder (`$XXX`, `$X,XXX`). They appear on
-   `index.html` (three “From” lines), `planning.html` (three tiers, two coordination
-   cards, the à la carte list) and nowhere else. Search for `X,XXX` and `XXX`.
+   `index.html`, `planning.html`, `coordination.html`, and in pricing schema. Search for
+   `X,XXX` and `XXX` before launch.
 2. **Photos.** Home-page slots 1–10 now use the supplied photos in `media/slots/`.
    Slots 11–24 remain numbered placeholders until their images are supplied. The home hero
    is in photo mode (no `is-light` class) and the header uses `on-dark` so the wordmark and
    navigation remain cream over the mountain image.
-3. **Asset versions.** Stylesheet, script and SVG links carry `?v=2.3.2`. Bump the number in
+3. **Asset versions.** Stylesheet, script and SVG links carry `?v=3.0`. Bump the number in
    every HTML file whenever you change `styles.css` or `main.js`, or visitors may keep an
    older copy for up to an hour:
    ```bash
@@ -102,6 +103,7 @@ on dark sections. Type is Fraunces (serif) and Figtree (sans) from Google Fonts.
 | `v2.4.1` | Dune hero photo removed (back to the cream placeholder, slot 1); “Hazel Wedding” and both buttons centred together again — wordmark stays bold with wider spacing, both buttons charcoal, scroll cue centred |
 | `v2.5` | Home: full-width photo band (couple on the dunes, slot 1) directly under the cream hero, nothing laid over it; 16:9 on desktop (capped height), 4:5 crop on phones |
 | `v2.5.1` | Photo band removed again; home is back to the cream hero (slot 1 badge restored) |
+| `v3.0` | Priority-one SEO package: expanded home and planning copy, dedicated coordination page, four supporting journal posts, service-area and FAQ content, structured data, internal links and sitemap updates |
 
 ## Adding a journal post
 
