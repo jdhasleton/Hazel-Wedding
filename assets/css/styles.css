@@ -227,11 +227,6 @@ body.menu-open .menu-toggle .bars::after { top: 4.5px; transform: rotate(-45deg)
   overflow: visible;
 }
 
-/* full-width photo band under the home hero — capped so it never towers on tall screens */
-.photo-band { margin: 0; line-height: 0; background: var(--sand); }
-.photo-band img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; max-height: min(88svh, 900px); object-fit: cover; object-position: 50% 45%; }
-@media (max-width: 700px) { .photo-band img { aspect-ratio: 4 / 5; object-position: 50% 55%; } }
-
 /* home hero tweaks (v2.4.1): bolder, wider-spaced wordmark; scroll cue dead-centre */
 .hero-center .display.wordmark { font-weight: 600; letter-spacing: 0.06em; }
 .hero-center .hero-meta { display: grid; grid-template-columns: 1fr auto 1fr; }
